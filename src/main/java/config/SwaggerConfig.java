@@ -1,6 +1,5 @@
 package config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,10 +16,8 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
           .select()
-          .apis(RequestHandlerSelectors.any())
-          .paths(PathSelectors.any())
+          .apis(RequestHandlerSelectors.basePackage("com.destinos.controllers"))
+          .paths(PathSelectors.ant("/api/*"))
           .build();
-	}
-	
-	
+	}		
 }
